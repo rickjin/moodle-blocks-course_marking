@@ -111,7 +111,7 @@ class block_course_marking extends block_base {
 
 	function getCourseTotal($courseId,$userId){
 		global $DB;
-		$res = $DB->get_record_sql('select g.finalgrade as total from mdl_grade_items as gi,mdl_grade_grades as g where g.itemid=gi.id and gi.courseid='.$courseId.' and g.userid='.$userId." and usermodified is null limit 1");
+		$res = $DB->get_record_sql('select g.finalgrade as total from mdl_grade_items as gi,mdl_grade_grades as g where g.itemid=gi.id and gi.courseid='.$courseId.' and g.userid='.$userId." limit 1");
 		if($res){
 			return round($res->total);
 		}else{
